@@ -1,6 +1,3 @@
-{-# LANGUAGE NamedFieldPuns #-}
-
-
 module Main where
 
 import Lib (run)

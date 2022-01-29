@@ -11,3 +11,5 @@ data DeepLClient = DeepLClient { apiKey :: DeepLAPIKey
             
 mkDeepLClient :: DeepLAPIKey -> DeepLAPIHost -> DeepLClient
 mkDeepLClient apiKey apiHost = DeepLClient { apiKey, apiHost }
+
+

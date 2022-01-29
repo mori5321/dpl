@@ -22,9 +22,17 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - optparse-applicative
+- bytestring
+- http-conduit 
+- http-types
+- utf8-string
 
 library:
   source-dirs: src
+  default-extensions:
+    - NamedFieldPuns
+    - DuplicateRecordFields
+    - OverloadedStrings
 
 executables:
   dpl-exe:
@@ -47,3 +55,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - dpl
+
