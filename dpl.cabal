@@ -25,6 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      DeepL
+      Envs
       Lib
   other-modules:
       Paths_dpl
