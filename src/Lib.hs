@@ -10,7 +10,7 @@ import Control.Monad.IO.Class (MonadIO(liftIO))
 import Data.Maybe (fromMaybe)
 import Control.Monad (liftM)
 
-import DeepL (DeepLClient(..), mkDeepLClient)
+import DeepL (mkDeepLClient, mkTranslationRequest, DeepLClient(..), runDeepLRequest)
 import Envs (Envs(..), getEnvs)
 
 
@@ -31,8 +31,8 @@ run = do
     case mEnvs of
         Nothing -> print "Failed to get some envs"
         Just Envs { apiKey, apiHost } -> do
-            let deepL = mkDeepLClient apiKey apiHost
-            runCLI options deepL
+            let deepLClient = mkDeepLClient apiKey apiHost
+            runCLI options deepLClient
     where
         opts = info (options <**> helper)
             ( fullDesc
@@ -53,17 +53,10 @@ options = Opts
         <> help "Use your editor for translation. (NOTE: set env EDITOR)."
         )
 
-demoRequest :: String -> [(UBS.ByteString, UBS.ByteString)]
-demoRequest apiKey = [ ("auth_key", UBS.fromString apiKey)
-              , ("text", UBS.fromString "それは真実ではありません")
-              , ("target_lang", "EN")
-              ]
-
 runSimpleMode :: DeepLClient -> IO ()
-runSimpleMode DeepLClient { apiKey, apiHost }= do
-    baseReq <- HTTP.parseRequest $ "https://" ++ apiHost ++ "/v2/translate"
-    let req = setRequestBodyURLEncoded (demoRequest apiKey) baseReq
-    response <- HTTP.httpLBS req 
+runSimpleMode client = do
+    let req = mkTranslationRequest client "それは真実ではありません" "EN"
+    response <- runDeepLRequest client req
     CLBS.putStrLn $ HTTP.getResponseBody response
 
 setDefaultConfig :: HTTP.Request -> HTTP.Request
