@@ -21,11 +21,12 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
-- optparse-applicative
-- bytestring
-- http-conduit 
+- optparse-applicative 
+- bytestring 
+- http-conduit
 - http-types
 - utf8-string
+- aeson
 
 library:
   source-dirs: src
@@ -33,6 +34,7 @@ library:
     - NamedFieldPuns
     - DuplicateRecordFields
     - OverloadedStrings
+    - DeriveGeneric
 
 executables:
   dpl-exe:
