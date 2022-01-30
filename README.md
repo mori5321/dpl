@@ -5,8 +5,8 @@ WIP...
 
 ## Set up envs
 ``` sh
-$DPL_API_KEY=<Your DeepL API Key>
-$DPL_EDITOR=<Your Editor> // ex: vim, nvim, code(VSCode)
+export DPL_API_KEY=<Your DeepL API Key>
+export DPL_EDITOR=<Your Editor> // ex: vim, nvim, code(VSCode)
 ```
 
 ## Usage/Interface (WIP)
