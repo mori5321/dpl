@@ -1,7 +1,7 @@
 module Envs (getEnvs, Envs(..)) where 
 
 import System.Environment (getEnv, lookupEnv)
-import DeepL (DeepLAPIKey, DeepLAPIHost)
+import DeepL.Request (DeepLAPIKey, DeepLAPIHost)
 
 
 envApiKey :: DeepLAPIKey

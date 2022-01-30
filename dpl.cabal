@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
-      DeepL
+      DeepL.Request
+      DeepL.Request.Error
+      DeepL.Request.Translate
       Envs
       Lib
   other-modules:
